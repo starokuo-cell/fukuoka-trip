@@ -1,0 +1,597 @@
+{\rtf1\ansi\ansicpg950\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="zh-Hant">\
+<head>\
+<meta charset="UTF-8">\
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\
+<title>\uc0\u55358 \u56807  CNY 2026 \u31119 \u23713 \u19977 \u20195 \u21516 \u22530 \u20043 \u26053 </title>\
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">\
+<style>\
+  :root \{\
+    --red: #C23B22;\
+    --red-dark: #8B1A1A;\
+    --gold: #D4A843;\
+    --gold-light: #F0D890;\
+    --cream: #FDF6EC;\
+    --ink: #2C1810;\
+    --ink-light: #5C4033;\
+    --paper: #FAF3E8;\
+    --white: #FFFCF7;\
+    --shadow: rgba(44, 24, 16, 0.08);\
+    --day1: #C23B22;\
+    --day2: #2E7D5B;\
+    --day3: #3B6BA5;\
+    --day4: #8B6914;\
+  \}\
+\
+  * \{ margin: 0; padding: 0; box-sizing: border-box; \}\
+\
+  body \{\
+    font-family: 'Noto Sans TC', sans-serif;\
+    background: var(--cream);\
+    color: var(--ink);\
+    line-height: 1.7;\
+    overflow-x: hidden;\
+  \}\
+\
+  /* Hero */\
+  .hero \{\
+    background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, #D44A33 100%);\
+    color: var(--cream);\
+    padding: 60px 24px 50px;\
+    text-align: center;\
+    position: relative;\
+    overflow: hidden;\
+  \}\
+  .hero::before \{\
+    content: '\uc0\u55358 \u56807 ';\
+    position: absolute;\
+    font-size: 200px;\
+    opacity: 0.06;\
+    top: -30px;\
+    right: -30px;\
+  \}\
+  .hero::after \{\
+    content: '\uc0\u9992 \u65039 ';\
+    position: absolute;\
+    font-size: 80px;\
+    opacity: 0.08;\
+    bottom: 10px;\
+    left: 20px;\
+  \}\
+  .hero h1 \{\
+    font-family: 'Noto Serif TC', serif;\
+    font-size: clamp(1.8rem, 5vw, 2.6rem);\
+    font-weight: 900;\
+    letter-spacing: 0.08em;\
+    margin-bottom: 8px;\
+  \}\
+  .hero .subtitle \{\
+    font-size: 0.95rem;\
+    opacity: 0.85;\
+    font-weight: 300;\
+    letter-spacing: 0.15em;\
+  \}\
+  .hero .dates \{\
+    display: inline-block;\
+    margin-top: 16px;\
+    padding: 8px 24px;\
+    border: 1px solid rgba(255,255,255,0.3);\
+    border-radius: 30px;\
+    font-size: 0.9rem;\
+    letter-spacing: 0.1em;\
+  \}\
+\
+  /* Info Bar */\
+  .info-bar \{\
+    display: flex;\
+    flex-wrap: wrap;\
+    justify-content: center;\
+    gap: 16px 32px;\
+    padding: 20px 24px;\
+    background: var(--white);\
+    border-bottom: 1px solid rgba(0,0,0,0.06);\
+    font-size: 0.85rem;\
+    color: var(--ink-light);\
+  \}\
+  .info-bar span \{ display: flex; align-items: center; gap: 6px; \}\
+\
+  /* Day Tabs */\
+  .tabs \{\
+    display: flex;\
+    justify-content: center;\
+    gap: 0;\
+    padding: 20px 16px 0;\
+    position: sticky;\
+    top: 0;\
+    z-index: 100;\
+    background: var(--cream);\
+  \}\
+  .tab \{\
+    padding: 10px 20px;\
+    border: none;\
+    background: transparent;\
+    font-family: 'Noto Sans TC', sans-serif;\
+    font-size: 0.85rem;\
+    font-weight: 500;\
+    color: var(--ink-light);\
+    cursor: pointer;\
+    border-bottom: 3px solid transparent;\
+    transition: all 0.25s;\
+    letter-spacing: 0.05em;\
+  \}\
+  .tab:hover \{ color: var(--ink); \}\
+  .tab.active \{\
+    color: var(--ink);\
+    font-weight: 700;\
+    border-bottom-color: var(--red);\
+  \}\
+\
+  /* Day Container */\
+  .day-section \{ display: none; padding: 20px 16px 60px; max-width: 720px; margin: 0 auto; \}\
+  .day-section.active \{ display: block; animation: fadeUp 0.35s ease; \}\
+  @keyframes fadeUp \{\
+    from \{ opacity: 0; transform: translateY(12px); \}\
+    to \{ opacity: 1; transform: translateY(0); \}\
+  \}\
+\
+  .day-header \{\
+    text-align: center;\
+    padding: 24px 0 20px;\
+  \}\
+  .day-header h2 \{\
+    font-family: 'Noto Serif TC', serif;\
+    font-size: 1.5rem;\
+    font-weight: 700;\
+  \}\
+  .day-header .day-theme \{\
+    font-size: 0.85rem;\
+    color: var(--ink-light);\
+    margin-top: 4px;\
+  \}\
+\
+  /* Timeline */\
+  .timeline \{ position: relative; padding-left: 28px; \}\
+  .timeline::before \{\
+    content: '';\
+    position: absolute;\
+    left: 8px;\
+    top: 0;\
+    bottom: 0;\
+    width: 2px;\
+    background: linear-gradient(to bottom, var(--gold-light), var(--gold), var(--gold-light));\
+    border-radius: 1px;\
+  \}\
+\
+  .event \{\
+    position: relative;\
+    margin-bottom: 24px;\
+    background: var(--white);\
+    border-radius: 14px;\
+    padding: 18px 18px 14px;\
+    box-shadow: 0 2px 12px var(--shadow);\
+    transition: transform 0.2s;\
+  \}\
+  .event:hover \{ transform: translateY(-2px); box-shadow: 0 4px 20px var(--shadow); \}\
+  .event::before \{\
+    content: '';\
+    position: absolute;\
+    left: -24px;\
+    top: 22px;\
+    width: 10px;\
+    height: 10px;\
+    border-radius: 50%;\
+    background: var(--gold);\
+    border: 2px solid var(--white);\
+    box-shadow: 0 0 0 2px var(--gold);\
+  \}\
+\
+  .event-time \{\
+    font-size: 0.75rem;\
+    font-weight: 700;\
+    color: var(--red);\
+    letter-spacing: 0.08em;\
+    margin-bottom: 4px;\
+  \}\
+  .event-title \{\
+    font-family: 'Noto Serif TC', serif;\
+    font-size: 1.1rem;\
+    font-weight: 700;\
+    margin-bottom: 6px;\
+    line-height: 1.5;\
+  \}\
+  .event-desc \{\
+    font-size: 0.88rem;\
+    color: var(--ink-light);\
+    line-height: 1.8;\
+  \}\
+  .event-desc strong \{ color: var(--ink); \}\
+\
+  /* Tags */\
+  .tags \{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; \}\
+  .tag \{\
+    display: inline-flex;\
+    align-items: center;\
+    gap: 4px;\
+    padding: 4px 10px;\
+    border-radius: 20px;\
+    font-size: 0.75rem;\
+    font-weight: 500;\
+    text-decoration: none;\
+    transition: all 0.2s;\
+  \}\
+  .tag-transport \{ background: #EEF2FF; color: #4338CA; \}\
+  .tag-food \{ background: #FFF1F0; color: #C23B22; \}\
+  .tag-spot \{ background: #F0FAF4; color: #166534; \}\
+  .tag-hotel \{ background: #FEF9EE; color: #92400E; \}\
+  .tag-note \{ background: #F5F5F5; color: #555; \}\
+  .tag-reserved \{ background: #FFF7ED; color: #9A3412; border: 1px solid #FDBA74; \}\
+\
+  a.tag:hover \{ transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); \}\
+\
+  /* Alert box */\
+  .alert \{\
+    background: #FFF8F0;\
+    border-left: 3px solid var(--gold);\
+    padding: 12px 14px;\
+    border-radius: 0 10px 10px 0;\
+    margin-top: 10px;\
+    font-size: 0.82rem;\
+    color: var(--ink-light);\
+    line-height: 1.7;\
+  \}\
+\
+  /* Footer */\
+  .footer \{\
+    text-align: center;\
+    padding: 30px 24px 40px;\
+    font-size: 0.8rem;\
+    color: var(--ink-light);\
+    opacity: 0.6;\
+  \}\
+\
+  /* Responsive */\
+  @media (max-width: 480px) \{\
+    .hero \{ padding: 44px 20px 36px; \}\
+    .hero h1 \{ font-size: 1.6rem; \}\
+    .tab \{ padding: 8px 14px; font-size: 0.8rem; \}\
+    .event \{ padding: 14px; \}\
+    .timeline \{ padding-left: 24px; \}\
+  \}\
+</style>\
+</head>\
+<body>\
+\
+<div class="hero">\
+  <h1>\uc0\u31119 \u23713 \u19977 \u20195 \u21516 \u22530 \u33298 \u36969 \u20043 \u26053 </h1>\
+  <div class="subtitle">CNY 2026 \uc0\u10022  FUKUOKA FAMILY TRIP</div>\
+  <div class="dates">\uc0\u55357 \u56787  2/16 (\u19968 ) \u8594  2/19 (\u22235 )\u12539 7\u20154 </div>\
+</div>\
+\
+<div class="info-bar">\
+  <span>\uc0\u55357 \u56421  7\u20154 \u65288 \u21547 \u38263 \u36649 2\u20301 \u65291 \u23569 \u24180 1\u20301 \u65289 </span>\
+  <span>\uc0\u55356 \u57320  <a href="https://www.google.com/maps/place/Grand+Hyatt+Fukuoka/@33.5894,130.4094,17z" target="_blank" style="color:var(--red);text-decoration:none;font-weight:500;">Grand Hyatt Fukuoka</a></span>\
+  <span>\uc0\u55357 \u56983  Day2 \u21253 \u36554  \u65372  \u20854 \u39192  Uber</span>\
+</div>\
+\
+<div class="tabs">\
+  <button class="tab active" onclick="showDay(1)">Day 1</button>\
+  <button class="tab" onclick="showDay(2)">Day 2</button>\
+  <button class="tab" onclick="showDay(3)">Day 3</button>\
+  <button class="tab" onclick="showDay(4)">Day 4</button>\
+</div>\
+\
+<!-- ========== DAY 1 ========== -->\
+<div class="day-section active" id="day1">\
+  <div class="day-header">\
+    <h2>2/16\uc0\u65288 \u19968 \u65289 \u38598 \u21512 \u12539 \u36939 \u27827 \u22478 \u33287 \u21338 \u22810 \u20043 \u22812 </h2>\
+    <div class="day-theme">\uc0\u27231 \u22580 \u38598 \u21512  \u8594  \u39151 \u24215  \u8594  \u27355 \u30000 \u31070 \u31038  \u8594  \u24029 \u31471 \u36890  \u8594  \u27700 \u28810 \u37707 \u26202 \u39184 </div>\
+  </div>\
+  <div class="timeline">\
+\
+    <div class="event">\
+      <div class="event-time">\uc0\u9992  11:15 / 12:05 \u25269 \u36948 </div>\
+      <div class="event-title">\uc0\u31119 \u23713 \u27231 \u22580 \u38598 \u21512 </div>\
+      <div class="event-desc">\
+        \uc0\u21488 \u28771 \u32068  BR106 \u8594  11:15 \u25269 \u36948 <br>\
+        \uc0\u39321 \u28207 \u32068  UO600 \u8594  12:05 \u25269 \u36948 <br>\
+        <strong>13:00</strong> \uc0\u22283 \u38555 \u32218 \u20837 \u22659 \u22823 \u24307  TULLY'S COFFEE \u38598 \u21512 \
+      </div>\
+      <div class="alert">\uc0\u9888 \u65039  \u20808 \u36023 \u19977 \u26126 \u27835 \u22635 \u32922 \u23376 \u65292 \u29240 \u29240 \u26377 \u31958 \u23615 \u30149 \u19981 \u33021 \u39187 \u12290 \u21488 \u28771 \u32068 \u21487 \u20808 \u21435 \u39151 \u24215 \u65292 \u19981 \u38656 \u31561 \u39321 \u28207 \u32068 \u12290 </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Fukuoka+Airport/@33.5859,130.4507,16z" target="_blank">\uc0\u55357 \u56525  \u31119 \u23713 \u27231 \u22580 </a>\
+        <span class="tag tag-transport">\uc0\u55357 \u56981  Uber \'d72 \u8594  \u39151 \u24215  20min</span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">14:00 - 15:30</div>\
+      <div class="event-title">Check-in \uc0\u65286  \u36629 \u39686 \u21320 \u39184 </div>\
+      <div class="event-desc">\
+        \uc0\u39151 \u24215  Check-in \u24460 \u21040 \u38468 \u36817 \u21507 \u21320 \u39184 \u12290 <br>\
+        <strong>\uc0\u25512 \u34214 \u65306 \u21931 \u33590  M&M</strong> \'97 \u23478 \u24237 \u24335 \u26085 \u26412 \u27915 \u39135 \u21654 \u21857 \u39208 \u65292 \u36208 \u36335  1 \u20998 \u37912 \u65292 \u24439 \u24447 \u22238 \u21040 80\u24180 \u20195 \u12290 \u25110 \u36939 \u27827 \u22478 \u20839 \u39184 \u24307 \u30342 \u21487 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-hotel" href="https://www.google.com/maps/place/Grand+Hyatt+Fukuoka/@33.5894,130.4094,17z" target="_blank">\uc0\u55356 \u57320  Grand Hyatt Fukuoka</a>\
+        <a class="tag tag-food" href="https://www.google.com/maps/place/1+Chome-6-16+Sumiyoshi,+Hakata+Ward,+Fukuoka,+812-0018/@33.5882,130.4098,17z" target="_blank">\uc0\u55356 \u57213  \u21931 \u33590  M&M</a>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">16:00 - 18:30</div>\
+      <div class="event-title">\uc0\u27355 \u30000 \u31070 \u31038  \u65286  \u24029 \u31471 \u36890 \u21830 \u24215 \u34903 </div>\
+      <div class="event-desc">\
+        \uc0\u39151 \u24215 \u36899 \u36890 \u21475 \u27493 \u34892 \u21069 \u24448  \u8594  <strong>\u27355 \u30000 \u31070 \u31038 </strong>\u65288 \u21338 \u22810 \u32317 \u37806 \u23432 \u65289 \u8594  <strong>\u24029 \u31471 \u36890 \u21830 \u24215 \u34903 </strong>\u36891 \u34903 \u25955 \u27493 \u12290 <br>\
+        \uc0\u20241 \u24687 \u40670 \u65306 \u24029 \u31471 \u21892 \u21705 \u24291 \u22580  \'97 \u21507 \u32005 \u35910 \u28271 \u24180 \u31957 \u65292 \u30475 \u24040 \u22823 \u23665 \u31520 \u65281 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Kushida+Shrine/@33.5902,130.4108,17z" target="_blank">\uc0\u9961  \u27355 \u30000 \u31070 \u31038 </a>\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Kawabata+Shopping+Arcade/@33.5922,130.4105,17z" target="_blank">\uc0\u55356 \u57326  \u24029 \u31471 \u36890 \u21830 \u24215 \u34903 </a>\
+        <span class="tag tag-transport">\uc0\u55357 \u57014  \u27493 \u34892 \u21487 \u36948 </span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">19:30</div>\
+      <div class="event-title">\uc0\u55356 \u57202  \u26202 \u39184 \u65306 \u21338 \u22810 \u33775 \u21619 \u40165 \u65288 \u27700 \u28810 \u38622 \u32905 \u37707 \u65289 </div>\
+      <div class="event-desc">\
+        \uc0\u31119 \u23713 \u24517 \u21507 \u65281 \u33184 \u21407 \u34507 \u30333 \u38622 \u28271 \u65292 \u21475 \u24863 \u28331 \u21644 \u65292 \u32769 \u23569 \u30342 \u23452 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-food" href="https://www.google.com/maps/search/\uc0\u27700 \u28810 \u26009 \u29702 +\u21338 \u22810 \u33775 \u21619 \u40165 +\u20013 \u27954 \u26412 \u24215 /@33.5912,130.4045,17z" target="_blank">\u55356 \u57213  \u21338 \u22810 \u33775 \u21619 \u40165  \u20013 \u27954 \u26412 \u24215 </a>\
+        <span class="tag tag-reserved">\uc0\u9989  \u24050 \u35330 \u20301 </span>\
+        <span class="tag tag-transport">\uc0\u55357 \u56981  Uber \'d72 \u32004 5min</span>\
+      </div>\
+    </div>\
+\
+  </div>\
+</div>\
+\
+<!-- ========== DAY 2 ========== -->\
+<div class="day-section" id="day2">\
+  <div class="day-header">\
+    <h2>2/17\uc0\u65288 \u20108 \u65289 \u22826 \u23472 \u24220 \u31048 \u31119 \u12539 \u31070 \u31038 \u24033 \u31150 </h2>\
+    <div class="day-theme">\uc0\u20840 \u26085 \u21253 \u36554  \u55357 \u56976  14\u20154 \u24231 \u65372 \u22826 \u23472 \u24220  \u8594  \u31432 \u38272 \u31070 \u31038  \u8594  \u21335 \u34255 \u38498  \u8594  \u20303 \u21513 \u31070 \u31038 </div>\
+  </div>\
+  <div class="timeline">\
+\
+    <div class="event">\
+      <div class="event-time">09:00 \uc0\u20986 \u30332 </div>\
+      <div class="event-title">\uc0\u39151 \u24215 \u22823 \u24307 \u38598 \u21512 \u12539 \u21253 \u36554 \u20986 \u30332 </div>\
+      <div class="event-desc">\
+        \uc0\u20840 \u26085 \u21253 \u36554 \u65288 9am-7pm, 10\u23567 \u26178 \u65289 14\u20154 \u24231 \u65292 \u20840 \u23478 \u21516 \u36554 \u65292 \u34892 \u26446 \u29289 \u21697 \u25918 \u36554 \u19978 \u65292 \u38263 \u36649 \u20813 \u36208 \u36335 \u31561 \u36554 \u12290 \
+      </div>\
+      <div class="tags">\
+        <span class="tag tag-reserved">\uc0\u9989  \u24050 \u35330 \u36554  HKD 3,444 \u24050 \u20184 </span>\
+        <span class="tag tag-transport">\uc0\u55357 \u56976  \u21253 \u36554  \u8594  \u22826 \u23472 \u24220  30min</span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">9:30 - 11:00</div>\
+      <div class="event-title">\uc0\u9961  \u22826 \u23472 \u24220 \u22825 \u28415 \u23470  \u65286  \u21443 \u36947 \u32769 \u34903 </div>\
+      <div class="event-desc">\
+        <strong>\uc0\u21443 \u36947 </strong>\u65306 \u36891 \u34903 \u36023 \u21083 \u28900 \u22909 \u30340 \u12300 \u26757 \u26525 \u39173 \u12301 \u65292 \u30475 \u38536 \u30740 \u21566 \u35373 \u35336 \u30340 \u26143 \u24052 \u20811 \u65288 \u22806 \u35264 \u65289 \u12290 <br>\
+        <strong>\uc0\u22825 \u28415 \u23470 </strong>\u65306 \u24118 \u23401 \u23376 \u31048 \u27714 \u23416 \u26989 \u36914 \u27493 \u65281 \u21443 \u35264 \u26399 \u38291 \u38480 \u23450 \u12300 \u28418 \u28014 \u26862 \u26519 \u12301 \u33256 \u26178 \u26412 \u27583 \u12290 \
+      </div>\
+      <div class="alert">\uc0\u55357 \u56436  \u38263 \u36649 \u20633 \u26696 \u65306 \u33509 \u20154 \u22810 \u19981 \u24819 \u36208 \u65292 \u21487 \u21435 \u26049 \u37002 \u12300 \u20809 \u26126 \u31146 \u23546 \u12301 \u25110 \u12300 \u20061 \u24030 \u22283 \u31435 \u21338 \u29289 \u39208 \u12301 \u65288 \u26377 \u25163 \u25206 \u26799 \u65286 \u33298 \u36969 \u22823 \u24307 \u65289 \u20241 \u24687 \u12290 </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Dazaifu+Tenmangu/@33.5219,130.5346,17z" target="_blank">\uc0\u9961  \u22826 \u23472 \u24220 \u22825 \u28415 \u23470 </a>\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Starbucks+\uc0\u22826 \u23472 \u24220 \u22825 \u28288 \u23470 \u34920 \u21442 \u36947 \u24215 /@33.5213,130.5332,18z" target="_blank">\u9749  \u38536 \u30740 \u21566 \u26143 \u24052 \u20811 </a>\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Kyushu+National+Museum/@33.5193,130.5380,17z" target="_blank">\uc0\u55356 \u57307  \u20061 \u24030 \u22283 \u31435 \u21338 \u29289 \u39208 </a>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">11:00 - 13:00</div>\
+      <div class="event-title">\uc0\u55356 \u57201  \u21320 \u39184 \u65306 \u26757 \u20043 \u33457  \u22826 \u23472 \u24220 \u21029 \u33674 \u33258 \u28982 \u24245 </div>\
+      <div class="event-desc">\
+        \uc0\u35910 \u33104 \u25079 \u30707 \u26009 \u29702 \u65292 \u22826 \u23472 \u24220 \u21608 \u37002 \u39719 \u20013 \u21462 \u38748 \u30340 \u31934 \u32251 \u39184 \u24307 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-food" href="https://www.google.com/maps/search/\uc0\u26757 \u12398 \u33457 +\u22826 \u23472 \u24220 \u21029 \u33624 +\u33258 \u28982 \u24245 /@33.521,130.534,16z" target="_blank">\u55356 \u57213  \u26757 \u20043 \u33457  \u33258 \u28982 \u24245 </a>\
+        <span class="tag tag-reserved">\uc0\u9989  \u24050 \u35330 \u20301 </span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">13:00 - 14:00</div>\
+      <div class="event-title">\uc0\u9961  \u23542 \u28415 \u23470  \u31432 \u38272 \u31070 \u31038 </div>\
+      <div class="event-desc">\
+        \uc0\u39740 \u28357 \u20043 \u20995 \u32854 \u22320 \u65281 \u20445 \u20305 \u28040 \u28797 \u35299 \u21380 \u12290 \u39184 \u24307 \u36942 \u21435 \u36554 \u31243 \u32004  10 \u20998 \u37912 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Kamado+Shrine/@33.5112,130.5452,16z" target="_blank">\uc0\u9961  \u31432 \u38272 \u31070 \u31038 </a>\
+        <span class="tag tag-transport">\uc0\u55357 \u56976  \u36554 \u31243  10min</span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">14:00 - 16:00</div>\
+      <div class="event-title">\uc0\u55357 \u56911  \u21335 \u34255 \u38498 \u65288 \u19990 \u30028 \u26368 \u22823 \u33253 \u20315 \u65289 </div>\
+      <div class="event-desc">\
+        \uc0\u19990 \u30028 \u26368 \u22823 \u30340 \u37323 \u36838 \u25705 \u23612 \u33253 \u20315 \u20687 \u65292 \u38750 \u24120 \u22767 \u35264 \u65281 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Nanzoin+Temple/@33.6519,130.5327,16z" target="_blank">\uc0\u55357 \u57045  \u21335 \u34255 \u38498 </a>\
+        <span class="tag tag-transport">\uc0\u55357 \u56976  \u31432 \u38272 \u31070 \u31038  \u8594  30min</span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">16:00 - 17:45</div>\
+      <div class="event-title">\uc0\u9961  \u20303 \u21513 \u31070 \u31038 </div>\
+      <div class="event-desc">\
+        \uc0\u20301 \u26044 \u31119 \u23713 \u24066 \u21312 \u65292 \u26085 \u26412 \u26368 \u21476 \u32769 \u30340 \u20303 \u21513 \u31070 \u31038 \u20043 \u19968 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Sumiyoshi+Shrine/@33.5821,130.4114,17z" target="_blank">\uc0\u9961  \u20303 \u21513 \u31070 \u31038 </a>\
+        <span class="tag tag-transport">\uc0\u55357 \u56976  \u21335 \u34255 \u38498  \u8594  30min</span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">18:15</div>\
+      <div class="event-title">\uc0\u55358 \u56681  \u26202 \u39184 \u65306 Kikuya \u21916 \u20037 \u23478 \u65288 A5\u21644 \u29275 \u65289 </div>\
+      <div class="event-desc">\
+        \uc0\u39151 \u24215 \u38468 \u36817 \u65292 A5\u21644 \u29275 9\u36947 \u31934 \u32251 \u26009 \u29702 \u12290 <br>\
+        <strong>\uc0\u21496 \u27231 \u36617 \u21040 \u39184 \u24307 \u19979 \u36554 \u65292 \u21253 \u36554 \u32080 \u26463 \u12290 </strong>\u21507 \u23436 \u24460 \u33258 \u34892 \u25645  Uber \u22238 \u39151 \u24215 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-food" href="https://www.google.com/maps/search/\uc0\u21916 \u20037 \u23478 +Kikuya+\u21338 \u22810 /@33.589,130.409,16z" target="_blank">\u55356 \u57213  Kikuya \u21916 \u20037 \u23478 </a>\
+        <span class="tag tag-reserved">\uc0\u9989  \u24050 \u35330 \u20301 </span>\
+        <span class="tag tag-note">\uc0\u55357 \u56541  \u21253 \u36554 \u32080 \u26463 \u65292 Uber\u22238 \u39151 \u24215 </span>\
+      </div>\
+    </div>\
+\
+  </div>\
+</div>\
+\
+<!-- ========== DAY 3 ========== -->\
+<div class="day-section" id="day3">\
+  <div class="day-header">\
+    <h2>2/18\uc0\u65288 \u19977 \u65289 \u22825 \u31070 \u36891 \u34903 \u12539 \u32654 \u34899 \u39208 </h2>\
+    <div class="day-theme">\uc0\u22825 \u31070  One \u8594  \u21513 \u22618 \u39995 \u39770  \u8594  \u31119 \u23713 \u24066 \u32654 \u34899 \u39208  \u8594  GohGan \u26202 \u39184 </div>\
+  </div>\
+  <div class="timeline">\
+\
+    <div class="event">\
+      <div class="event-time">10:30 \uc0\u20986 \u30332 </div>\
+      <div class="event-title">\uc0\u39151 \u24215  \u8594  \u22825 \u31070  One Fukuoka Building</div>\
+      <div class="event-desc">\
+        2025\uc0\u24180 \u26368 \u26032 \u38283 \u24149 \u22320 \u27161 \u65281 B2 \u36899 \u25509 \u22825 \u31070 \u22320 \u19979 \u34903 \u65292 \u30433 \u24773 \u36891 \u34903 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/search/Tenjin+One+Fukuoka+Building/@33.5897,130.3987,17z" target="_blank">\uc0\u55356 \u57314  \u22825 \u31070  One Fukuoka</a>\
+        <span class="tag tag-transport">\uc0\u55357 \u56981  Uber \'d72</span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">13:30</div>\
+      <div class="event-title">\uc0\u55357 \u56351  \u21320 \u39184 \u65306 \u21338 \u22810 \u21517 \u20195  \u21513 \u22618 \u39995 \u39770 \u23627 </div>\
+      <div class="event-desc">\
+        \uc0\u21109 \u26989  150 \u24180 \u65292 \u20061 \u24030 \u31532 \u19968 \u39995 \u39770 \u39151 \u65281 13:00 \u21483 \u36554 \u20986 \u30332 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-food" href="https://www.google.com/maps/place/Yoshizuka+Unagiya/@33.5961,130.4098,17z" target="_blank">\uc0\u55356 \u57213  \u21513 \u22618 \u39995 \u39770 \u23627 </a>\
+        <span class="tag tag-reserved">\uc0\u9989  \u24050 \u35330 \u20301 </span>\
+        <span class="tag tag-transport">\uc0\u55357 \u56981  Uber \'d72 \u32004 10min</span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">15:00 - 17:30</div>\
+      <div class="event-title">\uc0\u55356 \u57256  \u31119 \u23713 \u24066 \u32654 \u34899 \u39208 </div>\
+      <div class="event-desc">\
+        \uc0\u30475 <strong>\u33609 \u38291 \u24396 \u29983 \u22823 \u40643 \u21335 \u29916 </strong>\u65281 <br>\
+        2F \uc0\u21654 \u21857 \u24307 \u12300 Aquam\u12301 \u22352 \u33879 \u30475 \u28246 \u26223  \'97 \u19981 \u36208 \u36335 \u20063 \u33021 \u20139 \u21463 \u20844 \u22290 \u32654 \u26223 \u30340 \u26368 \u20339 \u26041 \u24335 \u12290 <br>\
+        <em>\uc0\u32654 \u34899 \u39208  5:30pm \u38364 \u38272 </em>\
+      </div>\
+      <div class="alert">\uc0\u55357 \u56481  \u36996 \u26377 \u39636 \u21147 \u30340 \u35441 \u65306 \u12300 \u20845 \u26412 \u26494 421\u12301 \u22823 \u27155  \'97 \u25991 \u38738 \u23567 \u24215 \u12289 \u21654 \u21857 \u24215 \u12289 \u26360 \u24215 \u30340 \u29983 \u27963 \u25991 \u34269 \u34903 \u21312 \u12290 </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Fukuoka+Art+Museum/@33.5857,130.3822,17z" target="_blank">\uc0\u55357 \u56764  \u31119 \u23713 \u24066 \u32654 \u34899 \u39208 </a>\
+        <span class="tag tag-reserved">\uc0\u9989  \u24050 \u35330 \u31080 </span>\
+        <a class="tag tag-spot" href="https://www.google.com/maps/search/\uc0\u20845 \u26412 \u26494 421/@33.5806,130.3834,17z" target="_blank">\u55357 \u56538  \u20845 \u26412 \u26494 421</a>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">19:00</div>\
+      <div class="event-title">\uc0\u55356 \u56811 \u55356 \u56823  \u26202 \u39184 \u65306 GohGan \u21109 \u26032 \u27861 \u24335 \u26009 \u29702 </div>\
+      <div class="event-desc">\
+        \uc0\u21517 \u20154 \u36896 \u35370 \u30340 \u21109 \u26032 \u27861 \u24335 \u26202 \u39184 \u65292 \u36629 \u39686 \u29992 \u39184 \u29872 \u22659 \u65292 CP\u20540 \u36229 \u39640 \u12290 \u39151 \u24215 \u36208 \u36335  3 \u20998 \u37912 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-food" href="https://www.google.com/maps/search/GohGan+Fukuoka/@33.589,130.409,16z" target="_blank">\uc0\u55356 \u57213  GohGan</a>\
+        <span class="tag tag-reserved">\uc0\u9989  \u24050 \u35330 \u20301 </span>\
+        <span class="tag tag-transport">\uc0\u55357 \u57014  \u27493 \u34892  3min</span>\
+      </div>\
+    </div>\
+\
+  </div>\
+</div>\
+\
+<!-- ========== DAY 4 ========== -->\
+<div class="day-section" id="day4">\
+  <div class="day-header">\
+    <h2>2/19\uc0\u65288 \u22235 \u65289 \u24736 \u38290 \u21338 \u22810 \u65286 \u36070 \u27512 </h2>\
+    <div class="day-theme">\uc0\u34892 \u26446 \u23492 \u39151 \u24215  \u8594  \u36939 \u27827 \u22478 \u33258 \u30001 \u27963 \u21205  \u8594  \u27231 \u22580 </div>\
+  </div>\
+  <div class="timeline">\
+\
+    <div class="event">\
+      <div class="event-time">15:00</div>\
+      <div class="event-title">\uc0\u9992  \u39321 \u28207 \u32068  Check-out \u65286  \u20986 \u30332 </div>\
+      <div class="event-desc">\
+        Uber \'d71 \uc0\u21488 \u21069 \u24448 \u27231 \u22580 \u12290 <br>\
+        \uc0\u29677 \u27231 \u65306 <strong>UO639 18:05 \u36215 \u39131 </strong>\
+      </div>\
+      <div class="tags">\
+        <span class="tag tag-transport">\uc0\u55357 \u56981  Uber \'d71 \u8594  \u27231 \u22580 </span>\
+        <span class="tag tag-note">\uc0\u9992  UO639 18:05</span>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">10:30</div>\
+      <div class="event-title">\uc0\u21488 \u28771 \u32068  Check-out \u65286  \u23492 \u25918 \u34892 \u26446 </div>\
+      <div class="event-desc">\
+        \uc0\u36774 \u29702 \u36864 \u25151 \u65292 \u34892 \u26446 \u23492 \u23384 \u22312  Grand Hyatt \u27331 \u27311 \u12290 \u36629 \u39686 \u22312 \u21608 \u22285 \u27963 \u21205 \u65292 \u19981 \u36305 \u36960 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-hotel" href="https://www.google.com/maps/place/Grand+Hyatt+Fukuoka/@33.5894,130.4094,17z" target="_blank">\uc0\u55356 \u57320  Grand Hyatt \u34892 \u26446 \u23492 \u25918 </a>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">11:00 - 15:30</div>\
+      <div class="event-title">\uc0\u55357 \u57037  \u21338 \u22810 \u36939 \u27827 \u22478  Canal City\u65288 \u33258 \u30001 \u27963 \u21205 \u65289 </div>\
+      <div class="event-desc">\
+        \uc0\u36891 \u34903 \u12289 \u36092 \u29289 \u12289 \u30475 \u22132 \u27849 \u31168 \u65281 <br>\
+        \uc0\u21320 \u39184 \u25512 \u34214 \u65306 \u19968 \u34349 \u25289 \u40629 \u65292 \u25110 \u21271 \u26847  North Wing \u30526 \u22810 \u39184 \u24307 \u12290 \
+      </div>\
+      <div class="tags">\
+        <a class="tag tag-spot" href="https://www.google.com/maps/place/Canal+City+Hakata/@33.5894,130.4107,17z" target="_blank">\uc0\u55356 \u57324  \u21338 \u22810 \u36939 \u27827 \u22478 </a>\
+        <a class="tag tag-spot" href="https://bobbyfun.tw/canal-city-hakata/" target="_blank">\uc0\u55357 \u56534  \u36939 \u27827 \u22478 \u25915 \u30053 </a>\
+        <a class="tag tag-food" href="https://www.google.com/maps/search/\uc0\u19968 \u34349 +Canal+City+Hakata/@33.589,130.410,17z" target="_blank">\u55356 \u57180  \u19968 \u34349 \u25289 \u40629 </a>\
+      </div>\
+    </div>\
+\
+    <div class="event">\
+      <div class="event-time">16:00</div>\
+      <div class="event-title">\uc0\u9992  \u21488 \u28771 \u32068 \u21069 \u24448 \u27231 \u22580 </div>\
+      <div class="event-desc">\
+        Uber \'d72 \uc0\u21488 \u21069 \u24448 \u27231 \u22580 \u65292 \u36554 \u31243 \u32004  15-20 \u20998 \u37912 \u12290 <br>\
+        \uc0\u29677 \u27231 \u65306 <strong>BR101 19:20 \u36215 \u39131 </strong>\
+      </div>\
+      <div class="tags">\
+        <span class="tag tag-transport">\uc0\u55357 \u56981  Uber \'d72 \u8594  \u27231 \u22580  15-20min</span>\
+        <span class="tag tag-note">\uc0\u9992  BR101 19:20</span>\
+      </div>\
+    </div>\
+\
+  </div>\
+</div>\
+\
+<div class="footer">\
+  \uc0\u55358 \u56807  \u26032 \u24180 \u24555 \u27138 \u65281 \u31069 \u20840 \u23478 \u31119 \u23713 \u20043 \u26053 \u24179 \u23433 \u38918 \u21033  \u55358 \u56807 \
+</div>\
+\
+<script>\
+function showDay(n) \{\
+  document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));\
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));\
+  document.getElementById('day' + n).classList.add('active');\
+  document.querySelectorAll('.tab')[n - 1].classList.add('active');\
+  window.scrollTo(\{ top: 0, behavior: 'smooth' \});\
+\}\
+</script>\
+</body>\
+</html>}
