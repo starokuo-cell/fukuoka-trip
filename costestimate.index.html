@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>藥品費用計算</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0eb;
+    --card: #ffffff;
+    --accent: #3a7c6a;
+    --accent-light: #e8f3ef;
+    --accent-dark: #2c5e50;
+    --text: #2d2d2d;
+    --text-light: #6b6b6b;
+    --border: #e0dbd5;
+    --total-bg: #3a7c6a;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 120px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    letter-spacing: 2px;
+  }
+
+  .header p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    padding-left: 4px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+    transition: background 0.2s;
+  }
+
+  .item:last-child { border-bottom: none; }
+  .item:hover { background: #fafaf8; }
+
+  .item-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .item-price {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: right;
+  }
+
+  .qty-control {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 100px;
+  }
+
+  .qty-btn {
+    width: 32px;
+    height: 34px;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    color: var(--accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .qty-btn:hover { background: var(--accent-light); }
+  .qty-btn:active { background: var(--accent); color: #fff; }
+
+  .qty-input {
+    width: 36px;
+    height: 34px;
+    border: none;
+    border-left: 1.5px solid var(--border);
+    border-right: 1.5px solid var(--border);
+    text-align: center;
+    font-size: 0.9rem;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--text);
+    background: transparent;
+    -moz-appearance: textfield;
+  }
+
+  .qty-input::-webkit-outer-spin-button,
+  .qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .qty-input:focus { outline: none; background: var(--accent-light); }
+
+  .item-subtotal {
+    font-size: 0.85rem;
+    color: var(--accent-dark);
+    font-weight: 600;
+    min-width: 60px;
+    text-align: right;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .item-subtotal.visible { opacity: 1; }
+
+  .item.has-qty {
+    grid-template-columns: 1fr auto auto auto;
+  }
+
+  /* Total bar */
+  .total-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--total-bg);
+    color: #fff;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+    z-index: 100;
+    transition: transform 0.3s ease;
+  }
+
+  .total-bar.hidden { transform: translateY(100%); }
+
+  .total-label {
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  .total-amount {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .total-items {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+
+  .reset-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    color: var(--accent);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 101;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .reset-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .reset-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.1);
+  }
+
+  @media (min-width: 600px) {
+    body { padding: 40px; padding-bottom: 120px; max-width: 560px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>藥品費用計算</h1>
+  <p>填入數量，自動計算總金額</p>
+</div>
+
+<div class="section-title">外用藥品</div>
+<div class="card" id="topical-card"></div>
+
+<div class="section-title">口服藥物</div>
+<div class="card" id="oral-card"></div>
+
+<div class="total-bar hidden" id="total-bar">
+  <div>
+    <div class="total-label">合計</div>
+    <div class="total-items" id="total-items"></div>
+  </div>
+  <div class="total-amount" id="total-amount">$0</div>
+</div>
+
+<button class="reset-btn" id="reset-btn" title="清除全部">↺</button>
+
+<script>
+const topicalItems = [
+  { name: '倍姿滾珠瓶', price: 100, unit: '支' },
+  { name: '15g 杜鵑花酸', price: 350, unit: '支' },
+  { name: '痘膚潤', price: 300, unit: '支' },
+  { name: '醫皮痘', price: 680, unit: '罐' },
+  { name: '第四代A酸', price: 1950, unit: '罐' },
+  { name: '膚麗', price: 250, unit: '支' },
+  { name: '舒立達', price: 2700, unit: '支' },
+];
+
+const oralItems = [
+  { name: '口服藥 1-3天', price: 200, unit: '份' },
+  { name: '口服藥 5-7天', price: 500, unit: '份' },
+  { name: '口服藥 8-14天', price: 1000, unit: '份' },
+];
+
+function renderCard(containerId, items) {
+  const container = document.getElementById(containerId);
+  items.forEach((item, i) => {
+    const id = `${containerId}-${i}`;
+    const div = document.createElement('div');
+    div.className = 'item';
+    div.innerHTML = `
+      <div class="item-name">${item.name}</div>
+      <div class="item-price">$${item.price} / ${item.unit}</div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty('${id}', -1)">−</button>
+        <input class="qty-input" id="${id}" type="number" min="0" value="0"
+               oninput="updateTotal()" onchange="updateTotal()">
+        <button class="qty-btn" onclick="changeQty('${id}', 1)">+</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function changeQty(id, delta) {
+  const input = document.getElementById(id);
+  let val = parseInt(input.value) || 0;
+  val = Math.max(0, val + delta);
+  input.value = val;
+  updateTotal();
+}
+
+function getAllItems() {
+  return [
+    ...topicalItems.map((item, i) => ({ ...item, id: `topical-card-${i}` })),
+    ...oralItems.map((item, i) => ({ ...item, id: `oral-card-${i}` })),
+  ];
+}
+
+function updateTotal() {
+  const allItems = getAllItems();
+  let total = 0;
+  let count = 0;
+  let details = [];
+
+  allItems.forEach(item => {
+    const input = document.getElementById(item.id);
+    const qty = parseInt(input.value) || 0;
+    if (qty > 0) {
+      const sub = qty * item.price;
+      total += sub;
+      count += qty;
+      details.push(`${item.name} ×${qty}`);
+    }
+  });
+
+  const bar = document.getElementById('total-bar');
+  const resetBtn = document.getElementById('reset-btn');
+
+  if (total > 0) {
+    bar.classList.remove('hidden');
+    resetBtn.classList.add('visible');
+    document.getElementById('total-amount').textContent = `$${total.toLocaleString()}`;
+    document.getElementById('total-items').textContent = details.join('、');
+  } else {
+    bar.classList.add('hidden');
+    resetBtn.classList.remove('visible');
+  }
+}
+
+document.getElementById('reset-btn').addEventListener('click', () => {
+  document.querySelectorAll('.qty-input').forEach(input => input.value = 0);
+  updateTotal();
+});
+
+renderCard('topical-card', topicalItems);
+renderCard('oral-card', oralItems);
+</script>
+</body>
+</html>
